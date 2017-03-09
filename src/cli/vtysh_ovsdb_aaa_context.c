@@ -237,10 +237,10 @@ vtysh_display_radius_server_table(vtysh_ovsdb_cbmsg *p_msg)
       row = (const struct ovsrec_radius_server *)nodes[idx]->data;
 
       if (row->udp_port && *(row->udp_port) != RADIUS_SERVER_DEFAULT_PORT)
-         append_buff += sprintf(append_buff, " port %ld", *(row->udp_port));
+         append_buff += sprintf(append_buff, " port %"PRId64"", *(row->udp_port));
 
       if (row->timeout)
-         append_buff += sprintf(append_buff, " timeout %ld", *(row->timeout));
+         append_buff += sprintf(append_buff, " timeout %"PRId64"", *(row->timeout));
 
       if (row->passkey)
          append_buff += sprintf(append_buff, " key %s", row->passkey);
@@ -249,7 +249,7 @@ vtysh_display_radius_server_table(vtysh_ovsdb_cbmsg *p_msg)
          append_buff += sprintf(append_buff, " auth-type %s", row->auth_type);
 
       if (row->retries)
-         append_buff += sprintf(append_buff, " retries %ld", *(row->retries));
+         append_buff += sprintf(append_buff, " retries %"PRId64"", *(row->retries));
 
       vtysh_ovsdb_cli_print(p_msg, "radius-server host %s%s",
                                     row->address, buff);
@@ -311,10 +311,10 @@ vtysh_display_tacacs_server_table(vtysh_ovsdb_cbmsg *p_msg)
       row = (const struct ovsrec_tacacs_server *)nodes[idx]->data;
 
       if (row->tcp_port && *(row->tcp_port) != TACACS_SERVER_TCP_PORT_DEFAULT)
-         append_buff += sprintf(append_buff, " port %ld", *(row->tcp_port));
+         append_buff += sprintf(append_buff, " port %"PRId64"", *(row->tcp_port));
 
       if (row->timeout)
-         append_buff += sprintf(append_buff, " timeout %ld", *(row->timeout));
+         append_buff += sprintf(append_buff, " timeout %"PRId64"", *(row->timeout));
 
       if (row->passkey)
          append_buff += sprintf(append_buff, " key %s", row->passkey);
